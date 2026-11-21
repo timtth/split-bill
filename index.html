@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Split Bill">
+<meta name="theme-color" content="#fdf1dc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2a1e17" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%20viewBox%3D%220%200%20180%20180%22%3E%3Crect%20width%3D%22180%22%20height%3D%22180%22%20fill%3D%22%23ffe2b0%22%2F%3E%3Cpath%20transform%3D%22translate%28140%2C34%29%20scale%282.4%29%22%20d%3D%22M0-5%201.200-1.200%205%200%201.200%201.200%200%205-1.200%201.200-5%200-1.200-1.200Z%22%20fill%3D%22%23f58aa5%22%2F%3E%3Cpath%20transform%3D%22translate%28160%2C58%29%20scale%281.3%29%22%20d%3D%22M0-5%201.200-1.200%205%200%201.200%201.200%200%205-1.200%201.200-5%200-1.200-1.200Z%22%20fill%3D%22%23f58aa5%22%2F%3E%3Cg%20transform%3D%22translate%288%2C18%29%20scale%282.3%29%22%3E%3Cellipse%20cx%3D%2224%22%20cy%3D%2242.6%22%20rx%3D%2213%22%20ry%3D%222.2%22%20fill%3D%22%23000%22%20opacity%3D%22.1%22%2F%3E%3Cpath%20d%3D%22M9%2027C7%2016%2015%208%2025%208.5%2035%209%2042%2017%2040.5%2028%2039%2039%2030%2042.5%2021.5%2041.5%2013%2040.5%2010%2035%209%2027Z%22%20fill%3D%22%23dcab69%22%2F%3E%3Cpath%20d%3D%22M10.5%2031C13%2038%2021%2041%2029%2040%2022%2043.5%2012%2041%2010.5%2031Z%22%20fill%3D%22%23b98845%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M13%2019.5c2-4.5%206-7.3%2011-7.8%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%2233.5%22%20cy%3D%2215.5%22%20rx%3D%221.6%22%20ry%3D%221%22%20fill%3D%22%23b98845%22%2F%3E%3Cellipse%20cx%3D%2213.5%22%20cy%3D%2235.5%22%20rx%3D%221.3%22%20ry%3D%22.8%22%20fill%3D%22%23b98845%22%2F%3E%3Cellipse%20cx%3D%2235%22%20cy%3D%2236%22%20rx%3D%221.4%22%20ry%3D%22.9%22%20fill%3D%22%23b98845%22%2F%3E%3Cg%20transform%3D%22translate%280%2C0%29%22%3E%3Cellipse%20cx%3D%2214.5%22%20cy%3D%2230.5%22%20rx%3D%223.3%22%20ry%3D%222.1%22%20fill%3D%22%23ff8fa8%22%20opacity%3D%22.6%22%2F%3E%3Cellipse%20cx%3D%2233.5%22%20cy%3D%2230.5%22%20rx%3D%223.3%22%20ry%3D%222.1%22%20fill%3D%22%23ff8fa8%22%20opacity%3D%22.6%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%2226%22%20r%3D%222.3%22%20fill%3D%22%233b2415%22%2F%3E%3Ccircle%20cx%3D%2229.5%22%20cy%3D%2226%22%20r%3D%222.3%22%20fill%3D%22%233b2415%22%2F%3E%3Ccircle%20cx%3D%2219.3%22%20cy%3D%2225.2%22%20r%3D%22.8%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2230.3%22%20cy%3D%2225.2%22%20r%3D%22.8%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M21.6%2029.6q2.4%202.6%204.8%200%22%20fill%3D%22none%22%20stroke%3D%22%233b2415%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2876%2C64%29%20scale%282.1%29%22%3E%3Cellipse%20cx%3D%2224%22%20cy%3D%2242.6%22%20rx%3D%2216%22%20ry%3D%222.2%22%20fill%3D%22%23000%22%20opacity%3D%22.1%22%2F%3E%3Cpath%20d%3D%22M5.5%2032C5.5%2020.5%2013.5%2012.5%2024%2012.5S42.5%2020.5%2042.5%2032C42.5%2038.5%2035.5%2040.5%2024%2040.5S5.500%2038.5%205.5%2032Z%22%20fill%3D%22%23fffdf8%22%20stroke%3D%22%23ead7c4%22%20stroke-width%3D%221.3%22%2F%3E%3Cpath%20d%3D%22M9.5%2034.5C12%2038%2018%2039%2024%2039S36%2038%2038.5%2034.5C38%2038.5%2031%2039.7%2024%2039.7S10%2038.5%209.5%2034.5Z%22%20fill%3D%22%23ead7c4%22%20opacity%3D%22.6%22%2F%3E%3Cpath%20d%3D%22M11.5%2024c2-4.5%205.500-7%2010.5-7.700%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.85%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cg%20transform%3D%22translate%280%2C3%29%22%3E%3Cellipse%20cx%3D%2214.5%22%20cy%3D%2230.5%22%20rx%3D%223.3%22%20ry%3D%222.1%22%20fill%3D%22%23ff8fa8%22%20opacity%3D%22.6%22%2F%3E%3Cellipse%20cx%3D%2233.5%22%20cy%3D%2230.5%22%20rx%3D%223.3%22%20ry%3D%222.1%22%20fill%3D%22%23ff8fa8%22%20opacity%3D%22.6%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%2226%22%20r%3D%222.3%22%20fill%3D%22%233b2415%22%2F%3E%3Ccircle%20cx%3D%2229.5%22%20cy%3D%2226%22%20r%3D%222.3%22%20fill%3D%22%233b2415%22%2F%3E%3Ccircle%20cx%3D%2219.3%22%20cy%3D%2225.2%22%20r%3D%22.8%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2230.3%22%20cy%3D%2225.2%22%20r%3D%22.8%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M21.6%2029.6q2.4%202.6%204.8%200%22%20fill%3D%22none%22%20stroke%3D%22%233b2415%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<title>Split the Bill</title>
+<style>
+/* VOICE: cozy and playful, a personal tool for meals with friends.
+   IDEA: a snack stall receipt looked after by a potato and a mochi.
+   PICTURE: the working splitter itself, mascots sit on the title and stand beside each share.
+   COLOUR AND TYPE: butter cream ground, potato brown ink, mochi pink accent. Fredoka titles, Nunito text.
+   LAYOUT: one calm phone column. Title, bill, people, amounts, then the receipt. */
+:root{
+  color-scheme:light;
+  --bg:#fdf1dc; --dot:#f4e2c3; --card:#fffaf1; --ink:#4a3222; --muted:#806857; --line:#eedcc2;
+  --field:#fff3df; --chip:#fbead0; --pink:#f27f9b; --pink-soft:#ffd9e2; --pink-ink:#7a2540;
+  --brown:#7a4a24; --on-brown:#fff6e6; --warn:#8f5200; --warn-soft:#ffe9b8; --shadow:rgba(110,70,30,.16);
+  --display:Fredoka,ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold",-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme=light]){
+    color-scheme:dark;
+    --bg:#2a1e17; --dot:#33251c; --card:#372820; --ink:#fbeeda; --muted:#c9b29b; --line:#4f3b2e;
+    --field:#2c2019; --chip:#473429; --pink:#ff9db4; --pink-soft:#6b3443; --pink-ink:#ffe3ea;
+    --brown:#f3c780; --on-brown:#2a1e17; --warn:#ffd27a; --warn-soft:#4a3a17; --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme=dark]{
+  color-scheme:dark;
+  --bg:#2a1e17; --dot:#33251c; --card:#372820; --ink:#fbeeda; --muted:#c9b29b; --line:#4f3b2e;
+  --field:#2c2019; --chip:#473429; --pink:#ff9db4; --pink-soft:#6b3443; --pink-ink:#ffe3ea;
+  --brown:#f3c780; --on-brown:#2a1e17; --warn:#ffd27a; --warn-soft:#4a3a17; --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);background-image:radial-gradient(var(--dot) 1.6px,transparent 1.8px);background-size:22px 22px;
+  color:var(--ink);font:600 16px/1.45 Nunito,ui-rounded,"SF Pro Rounded",-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:clip}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:540px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) calc(36px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin:4px 4px 14px}
+h1{font:600 34px/1.05 var(--display);margin:0;letter-spacing:-.01em}
+.by{margin:6px 0 0;font-size:13px;font-weight:700;color:var(--pink-ink);background:var(--pink-soft);display:inline-block;padding:3px 10px;border-radius:999px}
+.hero{width:132px;height:76px;flex:none}
+.bob{animation:bob 2.8s ease-in-out infinite}
+.bob.b2{animation-delay:-1.4s}
+@keyframes bob{50%{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.bob{animation:none}}
+
+.seg{display:flex;background:var(--chip);border-radius:999px;padding:4px;margin-bottom:12px;border:1.5px solid var(--line)}
+.seg button{flex:1;border:0;background:transparent;min-height:44px;padding:8px 6px;border-radius:999px;font:500 16px/1 var(--display);color:var(--muted)}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 2px 6px var(--shadow)}
+
+.row.col{flex-direction:column;align-items:stretch;gap:0}
+.seg.small{margin-bottom:0}
+.seg.small button{min-height:40px;font-size:15px}
+#placeChips .chip{min-height:44px}
+.card{background:var(--card);border-radius:22px;padding:16px;margin-bottom:12px;border:1.5px solid var(--line)}
+.card h2{font:600 19px/1.2 var(--display);margin:0 0 10px}
+.row{display:flex;align-items:center;gap:10px;padding:9px 0}
+.row + .row{border-top:1.5px dashed var(--line)}
+.grow{flex:1}
+.sub{font-size:13px;color:var(--muted);font-weight:600}
+
+input[type=text],input[inputmode],select{background:var(--field);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;width:100%;min-height:44px;outline:none;-webkit-appearance:none;appearance:none;font-weight:700}
+input::placeholder{color:var(--muted);opacity:.75;font-weight:600}
+input:focus,select:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-soft)}
+button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+input.pct{width:68px;flex:none;text-align:right}
+.unit{color:var(--muted);margin-left:-4px}
+.pre{position:relative}
+.pre > span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;white-space:nowrap}
+.pre.money input{padding-left:44px}
+.pre.qty{width:62px;flex:none}
+.pre.qty input{padding-left:26px;padding-right:6px}
+
+.switch{position:relative;width:50px;height:30px;flex:none}
+.switch input{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0}
+.switch i{position:absolute;inset:0;background:var(--line);border-radius:20px;transition:.15s;pointer-events:none}
+.switch i:after{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.switch input:checked + i{background:var(--pink)}
+.switch input:checked + i:after{transform:translateX(20px)}
+.switch input:focus-visible + i{outline:3px solid var(--pink);outline-offset:2px}
+
+details{border-top:1.5px dashed var(--line);margin-top:2px}
+summary{list-style:none;display:flex;align-items:center;gap:10px;padding:12px 0 6px;min-height:44px;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary .edit{color:var(--pink-ink);background:var(--pink-soft);font-size:13px;font-weight:800;padding:4px 12px;border-radius:999px;white-space:nowrap}
+details[open] summary .edit{background:var(--chip);color:var(--ink)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:5px;border:1.5px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 12px;min-height:38px;font-weight:700;font-size:14px;line-height:1.1}
+.chip .mascot{margin:-3px 0 -3px -5px}
+.chip.on{background:var(--pink-soft);border-color:var(--pink);color:var(--pink-ink);font-weight:800}
+
+.person{display:flex;align-items:center;gap:8px;padding:5px 0}
+.avbtn{border:1.5px solid var(--line);background:var(--field);border-radius:50%;width:46px;height:46px;flex:none;padding:0;display:grid;place-items:center}
+.avbtn:active{transform:scale(.92)}
+.x{border:0;background:transparent;color:var(--muted);font-size:24px;line-height:1;width:36px;height:44px;flex:none;padding:0;border-radius:12px}
+.btn{border:1.5px dashed var(--line);border-radius:16px;min-height:46px;padding:10px 14px;font:500 16px/1.1 var(--display);background:transparent;color:var(--ink);width:100%}
+.btn.primary{border:0;background:var(--brown);color:var(--on-brown);min-height:52px;font-size:17px;box-shadow:0 3px 0 var(--shadow)}
+.btn.primary:active{transform:translateY(2px);box-shadow:none}
+.btn.ghost{border-style:solid;color:var(--muted);background:var(--card)}
+.btns{display:flex;gap:8px;margin-top:10px}
+
+.big input{font:600 26px/1.1 var(--display);padding-top:12px;padding-bottom:12px;padding-left:56px}
+.big > span{font-size:19px;left:14px}
+
+.item{border:1.5px solid var(--line);border-radius:18px;padding:10px;margin-bottom:10px;background:var(--card)}
+.item .top{display:flex;gap:6px;align-items:center}
+.item .top .name{flex:1}
+.item .nums{display:flex;gap:8px;align-items:center;margin-top:6px}
+.item .nums .price{flex:1}
+.item .nums .pre.qty{width:92px}
+.item .nums .lbl{font-size:13px;color:var(--muted);flex:none}
+.item .who{margin-top:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.item.unassigned{border-color:var(--warn);border-style:dashed}
+.note{background:var(--warn-soft);color:var(--warn);border-radius:14px;padding:9px 12px;font-size:14px;font-weight:700;margin:8px 0 4px}
+
+.receipt{position:relative;border:0;border-radius:22px 22px 0 0;margin-bottom:24px;padding-bottom:10px;filter:drop-shadow(0 3px 7px var(--shadow))}
+.receipt:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:10px;
+  background:radial-gradient(circle at 9px 0,var(--card) 8.5px,transparent 9px);background-size:18px 10px;background-repeat:repeat-x}
+.line{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:15px}
+.line span:first-child{color:var(--muted)}
+.line span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.line.total{border-top:1.5px dashed var(--line);margin-top:8px;padding-top:10px;align-items:baseline}
+.line.total span:first-child{color:var(--ink);font:600 18px/1 var(--display)}
+.line.total span:last-child{font:600 28px/1 var(--display)}
+.share{display:flex;align-items:center;gap:10px;border-top:1.5px dashed var(--line);padding:10px 0}
+.share .who{font-weight:800;overflow-wrap:anywhere}
+.share .det{font-size:13px;color:var(--muted);margin-top:1px;overflow-wrap:anywhere}
+.share .amt{font:600 21px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11px;font-weight:800;color:var(--pink-ink);background:var(--pink-soft);padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.collect{background:var(--pink-soft);color:var(--pink-ink);border-radius:14px;padding:9px 12px;font-size:14px;font-weight:700;margin-top:4px}
+.empty{text-align:center;padding:8px 0 6px;color:var(--muted)}
+.empty p{margin:4px 0 0}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;max-width:90vw;
+  background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:700;transition:.2s;pointer-events:none;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;text-align:center;font-size:13px;color:var(--muted);margin-top:20px}
+footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Split the Bill</h1>
+      <p class="by">a little app by Tim</p>
+    </div>
+    <svg class="hero" id="hero" viewBox="0 0 132 76" aria-hidden="true"></svg>
+  </header>
+
+  <div class="seg" id="modeSeg">
+    <button data-mode="even">Split evenly</button>
+    <button data-mode="items">Split by dish</button>
+  </div>
+
+  <div class="card">
+    <h2>The bill</h2>
+    <div class="row">
+      <input type="text" id="title" placeholder="What's this for? (e.g. Hotpot dinner)" aria-label="Bill name">
+    </div>
+    <div class="row col">
+      <div class="seg small" id="countrySeg">
+        <button data-country="sg">Singapore</button><button data-country="my">Malaysia</button><button data-country="other">Other</button>
+      </div>
+      <div class="sub" id="placeAsk" style="margin-top:10px">What does the menu or receipt add on top?</div>
+      <div class="chips" id="placeChips" style="margin-top:6px"></div>
+      <div class="sub" id="placeHint" style="margin-top:8px"></div>
+    </div>
+    <div class="row">
+      <div class="grow">Discount or voucher<div class="sub">Taken off before charges</div></div>
+      <div class="pre money" style="width:128px"><span class="cur"></span><input id="discount" inputmode="decimal" placeholder="0.00" aria-label="Discount"></div>
+    </div>
+    <details id="chg">
+      <summary><div class="grow"><div class="sub">Added on top</div><div id="chgSum"></div></div><span class="edit">Edit</span></summary>
+      <div class="row">
+        <div class="grow">Service charge<div class="sub">Usually 10%</div></div>
+        <input class="pct" id="scRate" inputmode="decimal" aria-label="Service charge percent"><span class="unit">%</span>
+        <label class="switch"><input type="checkbox" id="scOn" aria-label="Service charge on"><i></i></label>
+      </div>
+      <div class="row">
+        <div class="grow"><span id="taxName">GST</span><div class="sub" id="taxHint"></div></div>
+        <input class="pct" id="taxRate" inputmode="decimal" aria-label="Tax percent"><span class="unit">%</span>
+        <label class="switch"><input type="checkbox" id="taxOn" aria-label="Tax on"><i></i></label>
+      </div>
+      <div class="row">
+        <div class="grow">Tax is charged on the service charge too<div class="sub">On for Singapore GST. Off for Malaysia SST, which is on the food price only.</div></div>
+        <label class="switch"><input type="checkbox" id="taxOnSC" aria-label="Tax on service charge"><i></i></label>
+      </div>
+      <div class="row">
+        <div class="grow">Currency symbol<div class="sub">For trips elsewhere</div></div>
+        <input type="text" id="cur" maxlength="4" style="width:84px;text-align:center" aria-label="Currency symbol">
+      </div>
+    </details>
+    <div id="fxBox" style="border-top:1.5px dashed var(--line);margin-top:6px">
+      <div class="row">
+        <div class="grow">S$ and RM exchange rate<div class="sub" id="fxSub"></div></div>
+        <label class="switch"><input type="checkbox" id="fxOn" aria-label="Use the exchange rate"><i></i></label>
+      </div>
+      <div class="row" id="fxRateRow">
+        <div class="grow">S$1 = RM<div class="sub" id="fxNote"></div></div>
+        <input class="pct" id="fxRate" inputmode="decimal" placeholder="e.g. 3.15" style="width:108px" aria-label="Ringgit for one Singapore dollar">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Who's eating</h2>
+    <div id="people"></div>
+    <div class="btns"><button class="btn" id="addPerson">+ Add a friend</button></div>
+    <div class="sub" style="margin-top:8px">Tap a mascot to swap it.</div>
+    <div class="row" style="margin-top:6px;border-top:1.5px dashed var(--line)">
+      <div class="grow">Who paid first?</div>
+      <div style="width:52%"><select id="payer" aria-label="Who paid"></select></div>
+    </div>
+  </div>
+
+  <div class="card" id="evenCard">
+    <h2>How much?</h2>
+    <div class="pre money big"><span class="cur"></span><input id="evenAmount" inputmode="decimal" placeholder="0.00" aria-label="Amount"></div>
+    <div class="sub" id="evenHint" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card" id="itemsCard">
+    <h2>What did you order?</h2>
+    <div id="items"></div>
+    <div class="btns"><button class="btn" id="addItem">+ Add a dish</button></div>
+    <div class="sub" style="margin-top:8px">Tap who had each dish. Two names on one dish means they split it.</div>
+    <div class="row" style="margin-top:10px;border-top:1.5px dashed var(--line)">
+      <div class="grow">Match my receipt<div class="sub">Optional. Type the final total printed on the receipt and the shares adjust to add up to it.</div></div>
+      <div class="pre money" style="width:128px"><span class="cur"></span><input id="receiptTotal" inputmode="decimal" placeholder="0.00" aria-label="Final total on the receipt"></div>
+    </div>
+  </div>
+
+  <div class="card receipt" id="result"></div>
+
+  <div class="btns"><button class="btn primary" id="copyBtn">Copy summary for the group chat</button></div>
+  <div class="btns"><button class="btn ghost" id="newBill">New bill (keep my friends)</button></div>
+
+  <footer><span id="tiny"></span><span>Made with love and potatoes. Credit: <b>Tim</b></span><span>Runs on your phone only, nothing is uploaded.</span></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/*__BOOT__*/
+(function(){
+  "use strict";
+
+  // ---------- mascots (original little potato and mochi friends) ----------
+  const FACE = '<ellipse cx="14.5" cy="30.5" rx="3.3" ry="2.1" fill="#ff8fa8" opacity=".6"/><ellipse cx="33.5" cy="30.5" rx="3.3" ry="2.1" fill="#ff8fa8" opacity=".6"/>' +
+    '<circle cx="18.5" cy="26" r="2.3" fill="#3b2415"/><circle cx="29.5" cy="26" r="2.3" fill="#3b2415"/><circle cx="19.3" cy="25.2" r=".8" fill="#fff"/><circle cx="30.3" cy="25.2" r=".8" fill="#fff"/>' +
+    '<path d="M21.6 29.6q2.4 2.6 4.8 0" fill="none" stroke="#3b2415" stroke-width="1.5" stroke-linecap="round"/>';
+  const face = dy => `<g transform="translate(0,${dy})">${FACE}</g>`;
+  const ground = w => `<ellipse cx="24" cy="42.6" rx="${w}" ry="2.2" fill="#000" opacity=".1"/>`;
+  const potato = (fill, spot) => ground(13) +
+    `<path d="M9 27C7 16 15 8 25 8.5 35 9 42 17 40.5 28 39 39 30 42.5 21.5 41.5 13 40.5 10 35 9 27Z" fill="${fill}"/>` +
+    `<path d="M10.5 31C13 38 21 41 29 40 22 43.5 12 41 10.5 31Z" fill="${spot}" opacity=".45"/>` +
+    '<path d="M13 19.5c2-4.5 6-7.3 11-7.8" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2.4" stroke-linecap="round"/>' +
+    `<ellipse cx="33.5" cy="15.5" rx="1.6" ry="1" fill="${spot}"/><ellipse cx="13.5" cy="35.5" rx="1.3" ry=".8" fill="${spot}"/><ellipse cx="35" cy="36" rx="1.4" ry=".9" fill="${spot}"/>`;
+  const mochi = (fill, edge) => ground(16) +
+    `<path d="M5.5 32C5.5 20.5 13.5 12.5 24 12.5S42.5 20.5 42.5 32C42.5 38.5 35.5 40.5 24 40.5S5.500 38.5 5.5 32Z" fill="${fill}" stroke="${edge}" stroke-width="1.3"/>` +
+    `<path d="M9.5 34.5C12 38 18 39 24 39S36 38 38.5 34.5C38 38.5 31 39.7 24 39.7S10 38.5 9.5 34.5Z" fill="${edge}" opacity=".6"/>` +
+    '<path d="M11.5 24c2-4.5 5.500-7 10.5-7.700" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.4" stroke-linecap="round"/>';
+  const ART = [
+    () => potato("#dcab69", "#b98845") + face(0),
+    () => mochi("#fffdf8", "#ead7c4") + face(3),
+    () => ground(15) + '<path d="M4.5 28q-2.500-.6-3.500 1" fill="none" stroke="#8f5ba0" stroke-width="1.4" stroke-linecap="round"/>' +
+          '<path d="M4.5 28C7 17 17.5 11 27 12.500 36 13.500 43 19 44 25.500 41 35.500 31 41.500 21 40.500 13 39.500 6.500 35 4.500 28Z" fill="#b07cc0"/>' +
+          '<path d="M7 31C11 38 20 41 29 39.500 21 43 9 40 7 31Z" fill="#8f5ba0" opacity=".45"/>' +
+          '<path d="M11 21c3-4 7-6 12-6.300" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="2.4" stroke-linecap="round"/>' +
+          '<ellipse cx="35" cy="17.500" rx="1.5" ry=".9" fill="#8f5ba0"/><ellipse cx="37" cy="33" rx="1.3" ry=".8" fill="#8f5ba0"/>' + face(1),
+    () => mochi("#ffd3dd", "#f3a9ba") +
+          [0,72,144,216,288].map(a => `<circle cx="33" cy="14.800" r="1.9" fill="#f58aa5" transform="rotate(${a} 33 17.500)"/>`).join("") +
+          '<circle cx="33" cy="17.500" r="1.2" fill="#ffe27a"/>' + face(3),
+    () => '<path d="M24 10V5.500" stroke="#7fae5a" stroke-width="1.7" stroke-linecap="round"/><path d="M24 6c-4-3.500-7.500-1.500-7 1 3 1.500 6 .800 7-1Z" fill="#9cc97a"/><path d="M24 6c4-3.500 7.500-1.500 7 1-3 1.500-6 .800-7-1Z" fill="#8fbf6a"/>' +
+          potato("#f2cf7d", "#d6aa4e") + face(0),
+    () => mochi("#d6e6b5", "#b2cc86") +
+          [[18,18],[23,15.500],[29,17],[26,20],[20.500,21.500],[32,20.500]].map(p => `<circle cx="${p[0]}" cy="${p[1]}" r=".9" fill="#8aaa5a"/>`).join("") + face(3),
+    () => potato("#dcab69", "#b98845") +
+          '<path d="M19.500 11.500c-.6 3 2.200 3.800 2.600 1Z" fill="#ffe27a"/><rect x="18" y="4.500" width="11.500" height="7.500" rx="2" fill="#ffe27a" stroke="#eec24a" stroke-width="1" transform="rotate(-8 24 8)"/>' + face(0),
+    () => mochi("#e2d4f5", "#c5b0e6") +
+          [[19,18.500,20],[24,16,-10],[29,18,30],[22.500,21,-30],[27,21.500,10]].map(p => `<ellipse cx="${p[0]}" cy="${p[1]}" rx="1.200" ry=".6" fill="#6b5a86" transform="rotate(${p[2]} ${p[0]} ${p[1]})"/>`).join("") + face(3)
+  ];
+  const art = k => ART[((k % ART.length) + ART.length) % ART.length]();
+  const avatar = (k, size) => `<svg class="mascot" width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true">${art(k)}</svg>`;
+  const SPARK = (x, y, s) => `<path transform="translate(${x},${y}) scale(${s})" d="M0-5 1.200-1.200 5 0 1.200 1.200 0 5-1.200 1.200-5 0-1.200-1.200Z" fill="#f58aa5"/>`;
+  const iconSVG = () => `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" fill="#ffe2b0"/>` +
+    SPARK(140, 34, 2.4) + SPARK(160, 58, 1.3) + `<g transform="translate(8,18) scale(2.3)">${art(0)}</g><g transform="translate(76,64) scale(2.1)">${art(1)}</g></svg>`;
+
+  // ---------- data ----------
+  const PLACES = {
+    sg: {name:"Singapore", cur:"S$", taxName:"GST", taxRate:"9", onSC:true, opts:[
+      {k:"both", label:"Service charge + GST", sc:true,  tax:true,  hint:"Sit down restaurants. The menu says prices are subject to service charge and GST."},
+      {k:"sc",   label:"Service charge only",  sc:true,  tax:false, hint:"Places that add a 10% service charge but no GST."},
+      {k:"nett", label:"Nett prices",          sc:false, tax:false, hint:"Hawker centres, kopitiams and fast food. Places with no service charge already show prices with GST inside."}]},
+    my: {name:"Malaysia", cur:"RM", taxName:"SST", taxRate:"6", onSC:false, opts:[
+      {k:"both", label:"Service charge + SST", sc:true,  tax:true,  hint:"Sit down restaurants. SST is 6% of the food price, the service charge itself is not taxed."},
+      {k:"tax",  label:"SST only",             sc:false, tax:true,  hint:"Places that add 6% SST but no service charge."},
+      {k:"sc",   label:"Service charge only",  sc:true,  tax:false, hint:"Places that add a 10% service charge but no SST."},
+      {k:"nett", label:"Nett prices",          sc:false, tax:false, hint:"Mamak stalls, kopitiams and hawker food. The menu price is what you pay."}]}
+  };
+  const isPair = () => S.country === "sg" || S.country === "my";
+  const today = () => { try { return new Date().toLocaleDateString("en-SG", {day:"numeric", month:"short", year:"numeric"}); } catch(e){ return ""; } };
+  const uid = () => Math.random().toString(36).slice(2,9);
+  const blankItem = () => ({id:uid(), name:"", price:"", qty:"1", who:[]});
+
+  function defaults(){
+    const me = {id:uid(), name:"Me", av:0};
+    return {
+      v:3, mode:"even", country:"sg", place:"both", cur:"S$", taxName:"GST",
+      scOn:true, scRate:"10", taxOn:true, taxRate:"9", taxOnSC:true, discount:"",
+      title:"", people:[me, {id:uid(), name:"Friend 1", av:1}, {id:uid(), name:"Friend 2", av:2}],
+      payer:me.id, evenAmount:"", round:"1", items:[blankItem()],
+      receiptTotal:"", fxOn:false, fxRate:"", fxSet:""
+    };
+  }
+
+  // ---------- storage (browser storage, or the Scriptable bridge when run there) ----------
+  const IN_SCRIPTABLE = !!window.__SCRIPTABLE;
+  const bridgeQueue = []; let bridgeBusy = false;
+  function bridge(action, data){ bridgeQueue.push("billsplit://" + action + "/" + encodeURIComponent(data)); if (!bridgeBusy) pump(); }
+  function pump(){
+    if (!bridgeQueue.length){ bridgeBusy = false; return; }
+    bridgeBusy = true; window.location.href = bridgeQueue.shift(); setTimeout(pump, 120);
+  }
+  function load(){
+    let s = null;
+    if (IN_SCRIPTABLE) s = window.__SAVED || null;
+    else { try { s = JSON.parse(localStorage.getItem("billsplit") || "null"); } catch(e){ s = null; } }
+    const d = defaults();
+    if (!s || typeof s !== "object") return d;
+    const st = Object.assign(d, s);
+    if (!Array.isArray(st.people) || !st.people.length) st.people = defaults().people;
+    if (!Array.isArray(st.items) || !st.items.length) st.items = [blankItem()];
+    st.people.forEach((p,i) => { if (typeof p.av !== "number") p.av = i % ART.length; if (typeof p.name !== "string") p.name = ""; });
+    st.items.forEach(it => { if (!Array.isArray(it.who)) it.who = []; });
+    if (typeof st.cur !== "string") st.cur = "S$";
+    if (!s.country){   // saved by an older version that used one "Where" list
+      const m = {sg:["sg","both"], sg_nett:["sg","nett"], my:["my","both"], my_nett:["my","nett"]}[s.preset];
+      if (m){ st.country = m[0]; st.place = m[1]; }
+      else { st.country = st.cur === "RM" ? "my" : st.cur === "S$" ? "sg" : "other"; st.place = "custom"; }
+    }
+    delete st.preset; delete st.evenType;
+    // Malaysia: service tax is worked out on the food price only, not on the service charge
+    if (st.country === "my" && st.place !== "custom") st.taxOnSC = false;
+    return st;
+  }
+  let saveTimer = null;
+  function save(){ clearTimeout(saveTimer); saveTimer = setTimeout(flush, 250); }
+  function flush(){
+    clearTimeout(saveTimer); saveTimer = null;
+    const json = JSON.stringify(S);
+    if (IN_SCRIPTABLE) bridge("save", json);
+    else { try { localStorage.setItem("billsplit", json); } catch(e){} }
+  }
+  window.addEventListener("pagehide", () => { if (saveTimer) flush(); });
+
+  let S = load();
+
+  // ---------- money helpers (all maths in cents) ----------
+  const num = v => {
+    let s = String(v).trim();
+    s = /^\d+,\d{1,2}$/.test(s) ? s.replace(",", ".") : s.replace(/,/g, "");   // "12,50" is 12.50, "1,234.50" is 1234.50
+    const n = parseFloat(s); return isFinite(n) && n > 0 ? n : 0;
+  };
+  const cents = v => Math.round(num(v) * 100);
+  const fmt = (c, sym) => (sym === undefined ? S.cur : sym) + (c/100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const esc = s => String(s).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  const shown = p => p.name.trim() || "Someone";
+  const nameOf = id => { const p = S.people.find(p => p.id === id); return p ? shown(p) : "Someone"; };
+  const pct = v => (num(v) || 0) + "%";
+
+  // Split `total` cents by weights so the parts add up exactly (largest remainder)
+  function allocate(total, weights){
+    const sumW = weights.reduce((a,b) => a+b, 0);
+    if (sumW <= 0) return weights.map(() => 0);
+    const raw = weights.map(w => total * w / sumW);
+    const out = raw.map(Math.floor);
+    let left = total - out.reduce((a,b) => a+b, 0);
+    const order = raw.map((r,i) => [r - Math.floor(r), i]).sort((a,b) => b[0]-a[0] || a[1]-b[1]);
+    for (let k = 0; k < order.length && left > 0; k++, left--) out[order[k][1]]++;
+    return out;
+  }
+
+  function charges(sub){
+    const disc = Math.min(cents(S.discount), sub);
+    const base = sub - disc;
+    const sc = S.scOn ? Math.round(base * num(S.scRate) / 100) : 0;
+    const taxBase = base + (S.taxOnSC ? sc : 0);
+    const tax = S.taxOn ? Math.round(taxBase * num(S.taxRate) / 100) : 0;
+    return {sub, disc, base, sc, tax, total: base + sc + tax};
+  }
+
+  function compute(){
+    const ppl = S.people;
+    const res = {ppl, warn:null, match:null, fx:null, detail: ppl.map(() => [])};
+    if (S.mode === "even"){
+      const amt = cents(S.evenAmount);
+      res.bill = charges(amt);
+      res.shares = allocate(res.bill.total, ppl.map(() => 1));
+    } else {
+      const lines = S.items.map(it => ({it, c: Math.round(num(it.price) * 100) * Math.max(1, Math.round(num(it.qty) || 1)),
+                                         who: it.who.filter(id => ppl.some(p => p.id === id))}));
+      const calc = charges(lines.reduce((a,l) => a + l.c, 0));
+      res.bill = calc;
+      // Match my receipt: the receipt's final total replaces the worked out total
+      const rt = cents(S.receiptTotal);
+      if (rt > 0 && calc.sub > 0){
+        res.match = {calc: calc.total, receipt: rt, diff: rt - calc.total};
+        res.bill = Object.assign({}, calc, {total: rt});
+      }
+      const w = ppl.map(() => 0);
+      let unassigned = 0;
+      lines.forEach(l => {
+        if (!l.c) return;
+        const who = l.who.length ? l.who : ppl.map(p => p.id);
+        if (!l.who.length) unassigned++;
+        const each = l.c / who.length;
+        who.forEach(id => {
+          const i = ppl.findIndex(p => p.id === id);
+          if (i < 0) return;
+          w[i] += each;
+          const label = (l.it.name.trim() || "Dish") + (num(l.it.qty) > 1 ? " ×" + Math.round(num(l.it.qty)) : "");
+          res.detail[i].push(label + (who.length > 1 ? " (shared " + who.length + ")" : ""));
+        });
+      });
+      if (unassigned) res.warn = unassigned + (unassigned > 1 ? " dishes have" : " dish has") + " no one picked yet, so " + (unassigned > 1 ? "they're" : "it's") + " split among everyone for now.";
+      res.shares = allocate(res.bill.total, w);
+      res.foodShares = w.map(x => Math.round(x));
+    }
+    // Exchange rate, always typed as S$1 = RM r. A bill in RM is divided by r, a bill in S$ is multiplied by r.
+    const r = num(S.fxRate);
+    if (S.fxOn && isPair() && r > 0){
+      const conv = c => Math.round(S.country === "my" ? c / r : c * r);
+      res.fx = {to: S.country === "my" ? "S$" : "RM", rate: r, rateText: String(S.fxRate).trim(), total: conv(res.bill.total), pay: res.shares.map(conv)};
+    }
+    res.payCur = res.fx ? res.fx.to : S.cur;
+    res.base = res.fx ? res.fx.pay : res.shares;
+    const step = parseInt(S.round, 10) || 1;
+    res.rounded = res.base.map(c => Math.ceil(c / step) * step);
+    res.step = step;
+    return res;
+  }
+
+  // ---------- rendering ----------
+  const $ = id => document.getElementById(id);
+
+  function chargeSummary(){
+    const bits = [];
+    if (S.scOn) bits.push(pct(S.scRate) + " service charge");
+    if (S.taxOn) bits.push(pct(S.taxRate) + " " + S.taxName);
+    return bits.length ? bits.join(" + ") : "Nett prices, nothing added";
+  }
+
+  function renderPlace(){
+    const c = PLACES[S.country];
+    document.querySelectorAll("#countrySeg button").forEach(b => b.classList.toggle("on", b.dataset.country === S.country));
+    $("placeAsk").style.display = c ? "" : "none";
+    $("placeChips").innerHTML = c ? c.opts.map(o => `<button class="chip ${S.place === o.k ? "on" : ""}" data-place="${o.k}" aria-pressed="${S.place === o.k}">${o.label}</button>`).join("") : "";
+    const o = c && c.opts.find(o => o.k === S.place);
+    $("placeHint").textContent = o ? o.hint : c ? "Your own settings. Tap a button to go back to the usual ones." : "Set your own charges and currency symbol under Edit.";
+    $("taxName").textContent = S.taxName;
+    $("taxHint").textContent = c ? c.name + " is usually " + c.taxRate + "%" : "Your own rate";
+  }
+
+  function renderFx(){
+    $("fxBox").style.display = isPair() ? "" : "none";
+    $("fxOn").checked = !!S.fxOn;
+    $("fxRateRow").style.display = S.fxOn ? "" : "none";
+    if (document.activeElement !== $("fxRate")) $("fxRate").value = S.fxRate;
+    $("fxSub").textContent = !S.fxOn ? "Turn on when friends pay back in the other currency."
+      : S.country === "my" ? "Bill is in RM. Friends pay back in S$." : "Bill is in S$. Friends pay back in RM.";
+    $("fxNote").textContent = num(S.fxRate) ? (S.fxSet ? "You set this on " + S.fxSet + ". Change it any time." : "Change it any time.")
+      : "Type today's rate from your bank or card app.";
+  }
+
+  function renderStatic(){
+    document.querySelectorAll("#modeSeg button").forEach(b => b.classList.toggle("on", b.dataset.mode === S.mode));
+    $("evenCard").style.display = S.mode === "even" ? "" : "none";
+    $("itemsCard").style.display = S.mode === "items" ? "" : "none";
+    $("title").value = S.title;
+    $("scOn").checked = S.scOn; $("scRate").value = S.scRate;
+    $("taxOn").checked = S.taxOn; $("taxRate").value = S.taxRate;
+    $("taxOnSC").checked = S.taxOnSC;
+    $("discount").value = S.discount;
+    $("cur").value = S.cur;
+    $("receiptTotal").value = S.receiptTotal;
+    $("evenAmount").value = S.evenAmount;
+    renderPlace(); renderFx(); renderPeople(); renderItems(); renderResult();
+    document.querySelectorAll(".cur").forEach(e => e.textContent = S.cur);
+  }
+
+  function payerOptions(){
+    if (!S.people.some(p => p.id === S.payer)) S.payer = S.people[0].id;
+    $("payer").innerHTML = S.people.map(p => `<option value="${p.id}">${esc(shown(p))}</option>`).join("");
+    $("payer").value = S.payer;
+  }
+
+  function renderPeople(){
+    $("people").innerHTML = S.people.map(p =>
+      `<div class="person"><button class="avbtn" data-av="${p.id}" aria-label="Change mascot">${avatar(p.av, 38)}</button>` +
+      `<input type="text" data-pid="${p.id}" value="${esc(p.name)}" placeholder="Name" aria-label="Name">` +
+      (S.people.length > 1 ? `<button class="x" data-del-person="${p.id}" aria-label="Remove">×</button>` : "") + `</div>`).join("");
+    payerOptions();
+  }
+
+  function renderItems(){
+    $("items").innerHTML = S.items.map(it => {
+      const who = it.who.filter(id => S.people.some(p => p.id === id));
+      const all = who.length === S.people.length;
+      return `<div class="item ${who.length || !num(it.price) ? "" : "unassigned"}" data-iid="${it.id}">
+        <div class="top">
+          <input class="name" type="text" data-f="name" value="${esc(it.name)}" placeholder="Dish name" aria-label="Dish">
+          <button class="x" data-del-item="${it.id}" aria-label="Remove dish">×</button>
+        </div>
+        <div class="nums">
+          <div class="pre money price"><span class="cur">${esc(S.cur)}</span><input data-f="price" inputmode="decimal" value="${esc(it.price)}" placeholder="Price each" aria-label="Price each"></div>
+          <span class="lbl">Qty</span>
+          <div class="pre qty"><span>×</span><input data-f="qty" inputmode="numeric" value="${esc(it.qty)}" aria-label="Quantity"></div>
+        </div>
+        <div class="who">
+          ${S.people.map(p => `<button class="chip ${who.includes(p.id) ? "on" : ""}" data-toggle="${p.id}" aria-pressed="${who.includes(p.id)}">${avatar(p.av, 24)}<span class="nm">${esc(shown(p))}</span></button>`).join("")}
+          <button class="chip ${all ? "on" : ""}" data-all="1" aria-pressed="${all}">Everyone</button>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  const line = (a, b) => `<div class="line"><span>${esc(a)}</span><span>${b}</span></div>`;
+
+  function renderResult(){
+    const r = compute(), b = r.bill, pc = r.payCur;
+    $("chgSum").textContent = chargeSummary();
+    $("evenHint").textContent = !(S.scOn || S.taxOn) ? "Nothing is added on top. The amount is split as it is."
+      : "The app adds " + chargeSummary() + " on top. Typing the final total from the receipt instead? "
+        + (PLACES[S.country] ? "Pick Nett prices above" : "Switch the charges off under Edit") + " so nothing is added twice.";
+    if (!b.total){
+      $("result").innerHTML = `<div class="empty">${avatar(0, 64)}${avatar(1, 56)}<p>${S.mode === "even"
+        ? "Type the amount and everyone's share shows up here."
+        : "Add a dish and its price, then tap who had it."}</p></div>`;
+      return;
+    }
+    let h = "<h2>Who pays what</h2>";
+    if (!b.finalOnly){
+      h += line("Food and drinks", fmt(b.sub));
+      if (b.disc) h += line("Discount", "−" + fmt(b.disc));
+      if (S.scOn) h += line("Service charge (" + pct(S.scRate) + ")", fmt(b.sc));
+      if (S.taxOn) h += line(S.taxName + " (" + pct(S.taxRate) + ")", fmt(b.tax));
+    }
+    if (r.match){
+      const d = r.match.diff;
+      h += line("Dishes work out to", fmt(r.match.calc));
+      h += `<div class="line total"><span>Total on receipt</span><span>${fmt(b.total)}</span></div>`;
+      if (d) h += `<div class="sub">${d > 0 ? "+" : "−"}${fmt(Math.abs(d))} difference, shared out by what each person ate.</div>`;
+      if (Math.abs(d) > Math.max(100, r.match.calc * 0.02))
+        h += `<div class="note">The receipt is ${fmt(Math.abs(d))} ${d > 0 ? "more" : "less"} than the dishes add up to. A dish, a charge or the discount may be missing.</div>`;
+    } else h += `<div class="line total"><span>Total</span><span>${fmt(b.total)}</span></div>`;
+    if (r.fx) h += line("In " + r.fx.to + ", at S$1 = RM" + esc(r.fx.rateText), "≈ " + fmt(r.fx.total, r.fx.to));
+    else if (S.fxOn && isPair()) h += `<div class="note">Type the exchange rate above to see what everyone pays back in ${S.country === "my" ? "S$" : "RM"}.</div>`;
+    if (r.warn) h += `<div class="note">${esc(r.warn)}</div>`;
+    const small = pc === "RM" ? "sen" : "cents", whole = pc === "RM" ? "Whole ringgit" : "Whole dollar";
+    h += `<div class="row"><div class="grow">Round each share up to</div><div style="width:46%"><select id="round" aria-label="Rounding">
+        <option value="1">Exact ${small}</option><option value="5">5 ${small}</option><option value="10">10 ${small}</option>
+        <option value="50">50 ${small}</option><option value="100">${whole}</option></select></div></div>`;
+    r.ppl.forEach((p,i) => {
+      let det = "";
+      if (S.mode === "items"){
+        det = r.detail[i].length ? esc(r.detail[i].join(", ")) : "Nothing picked";
+        if (r.foodShares && r.foodShares[i] && r.shares[i] !== r.foodShares[i]) det += ` · food ${fmt(r.foodShares[i])} + charges`;
+      } else det = "1 of " + r.ppl.length + " equal shares";
+      if (r.fx) det += ` · ${fmt(r.shares[i])} on the bill`;
+      if (r.step > 1 && r.rounded[i] !== r.base[i]) det += ` · exact ${fmt(r.base[i], pc)}`;
+      h += `<div class="share">${avatar(p.av, 44)}<div class="grow"><div class="who">${esc(shown(p))}${p.id === S.payer ? '<span class="tag">paid first</span>' : ""}</div>
+            <div class="det">${det}</div></div><div class="amt">${fmt(r.rounded[i], pc)}</div></div>`;
+    });
+    const owed = r.ppl.reduce((a,p,i) => a + (p.id === S.payer ? 0 : r.rounded[i]), 0);
+    if (r.ppl.length > 1) h += `<div class="collect">${esc(nameOf(S.payer))} collects ${fmt(owed, pc)} from the others.</div>`;
+    $("result").innerHTML = h;
+    $("round").value = String(S.round);
+  }
+
+  function summaryText(){
+    const r = compute(), b = r.bill, pc = r.payCur, out = [];
+    out.push((S.title.trim() || "Bill split") + " · total " + fmt(b.total) + (r.match ? " (from the receipt)" : ""));
+    if (!b.finalOnly){
+      const bits = ["Food " + fmt(b.sub)];
+      if (b.disc) bits.push("Discount −" + fmt(b.disc));
+      if (S.scOn) bits.push("Service (" + pct(S.scRate) + ") " + fmt(b.sc));
+      if (S.taxOn) bits.push(S.taxName + " (" + pct(S.taxRate) + ") " + fmt(b.tax));
+      out.push(bits.join(", "));
+    }
+    if (r.fx) out.push("Paying back in " + r.fx.to + " at S$1 = RM" + r.fx.rateText);
+    out.push("");
+    r.ppl.forEach((p,i) => {
+      let s = shown(p) + ": " + fmt(r.rounded[i], pc);
+      if (r.fx) s += " (" + fmt(r.shares[i]) + ")";
+      if (S.mode === "items" && r.detail[i].length) s += "  (" + r.detail[i].join(", ") + ")";
+      if (p.id === S.payer) s += "  [paid first]";
+      out.push(s);
+    });
+    out.push("");
+    out.push("Please send to " + nameOf(S.payer) + ". Thanks!");
+    return out.join("\n");
+  }
+
+  // ---------- events ----------
+  function applyPlace(country, k){
+    S.country = country;
+    const c = PLACES[country];
+    if (!c){
+      S.place = "custom";
+      if (S.taxName === "GST" || S.taxName === "SST") S.taxName = "Tax";
+      $("chg").open = true; return;
+    }
+    const o = c.opts.find(o => o.k === k) || c.opts[0];
+    S.place = o.k; S.cur = c.cur; S.taxName = c.taxName;
+    S.scOn = o.sc; S.scRate = "10"; S.taxOn = o.tax; S.taxRate = c.taxRate; S.taxOnSC = c.onSC;
+  }
+
+  document.addEventListener("click", e => {
+    const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.mode){ S.mode = t.dataset.mode; renderStatic(); save(); return; }
+    if (t.dataset.country){ applyPlace(t.dataset.country, S.place); renderStatic(); save(); return; }
+    if (t.dataset.place){ applyPlace(S.country, t.dataset.place); renderStatic(); save(); return; }
+    if (t.dataset.av){
+      const p = S.people.find(p => p.id === t.dataset.av);
+      if (p){ p.av = (p.av + 1) % ART.length; renderPeople(); renderItems(); renderResult(); save(); }
+      return;
+    }
+    if (t.id === "addPerson"){
+      const used = S.people.map(p => p.av);
+      let av = 0; while (used.includes(av) && av < ART.length - 1) av++;
+      if (used.includes(av)) av = S.people.length % ART.length;
+      const friend = {id:uid(), name:"Friend " + S.people.length, av};
+      S.items.forEach(it => { if (it.who.length && S.people.every(p => it.who.includes(p.id))) it.who.push(friend.id); });
+      S.people.push(friend); renderStatic(); save();
+      const inputs = document.querySelectorAll("[data-pid]"); const last = inputs[inputs.length-1];
+      if (last){ last.focus(); last.select(); }
+      return;
+    }
+    if (t.dataset.delPerson){
+      const id = t.dataset.delPerson;
+      S.people = S.people.filter(p => p.id !== id);
+      S.items.forEach(it => it.who = it.who.filter(w => w !== id));
+      renderStatic(); save(); return;
+    }
+    if (t.id === "addItem"){
+      S.items.push(blankItem()); renderItems(); renderResult(); save();
+      const names = document.querySelectorAll(".item .name"); const last = names[names.length-1]; if (last) last.focus();
+      return;
+    }
+    if (t.dataset.delItem){
+      S.items = S.items.filter(i => i.id !== t.dataset.delItem);
+      if (!S.items.length) S.items.push(blankItem());
+      renderItems(); renderResult(); save(); return;
+    }
+    const itemEl = t.closest(".item");
+    if (itemEl && (t.dataset.toggle || t.dataset.all)){
+      const it = S.items.find(i => i.id === itemEl.dataset.iid); if (!it) return;
+      if (t.dataset.all) it.who = it.who.length === S.people.length ? [] : S.people.map(p => p.id);
+      else { const id = t.dataset.toggle; it.who = it.who.includes(id) ? it.who.filter(w => w !== id) : it.who.concat(id); }
+      renderItems(); renderResult(); save(); return;
+    }
+    if (t.id === "copyBtn"){
+      if (!compute().bill.total){ toast("Nothing to copy yet. Add an amount first."); return; }
+      copy(summaryText()); return;
+    }
+    if (t.id === "newBill"){
+      S.title = ""; S.evenAmount = ""; S.discount = ""; S.receiptTotal = ""; S.items = [blankItem()];
+      renderStatic(); save(); toast("Fresh bill. Your friends are still here."); window.scrollTo(0, 0); return;
+    }
+  });
+
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (t.dataset.pid){
+      const p = S.people.find(p => p.id === t.dataset.pid); if (p) p.name = t.value;
+      payerOptions();
+      document.querySelectorAll(`[data-toggle="${t.dataset.pid}"] .nm`).forEach(n => n.textContent = t.value.trim() || "Someone");
+      renderResult(); save(); return;
+    }
+    const itemEl = t.closest && t.closest(".item");
+    if (itemEl && t.dataset.f){
+      const it = S.items.find(i => i.id === itemEl.dataset.iid);
+      if (it) it[t.dataset.f] = t.value;
+      const who = it ? it.who.filter(id => S.people.some(p => p.id === id)) : [];
+      itemEl.classList.toggle("unassigned", !!(it && !who.length && num(it.price)));
+      renderResult(); save(); return;
+    }
+    if (t.id === "cur"){
+      S.cur = t.value; document.querySelectorAll(".cur").forEach(el => el.textContent = S.cur);
+      renderResult(); save(); return;
+    }
+    if (t.id === "fxRate"){ S.fxRate = t.value; S.fxSet = today(); renderFx(); renderResult(); save(); return; }
+    const map = {title:"title", scRate:"scRate", taxRate:"taxRate", discount:"discount", evenAmount:"evenAmount", receiptTotal:"receiptTotal"};
+    if (map[t.id]){
+      S[map[t.id]] = t.value;
+      if (t.id === "scRate" || t.id === "taxRate"){ S.place = "custom"; renderPlace(); }
+      renderResult(); save();
+    }
+  });
+
+  document.addEventListener("change", e => {
+    const t = e.target;
+    if (t.id === "scOn" || t.id === "taxOn" || t.id === "taxOnSC"){ S[t.id] = t.checked; S.place = "custom"; renderStatic(); save(); return; }
+    if (t.id === "fxOn"){ S.fxOn = t.checked; renderFx(); renderResult(); save(); return; }
+    if (t.id === "payer"){ S.payer = t.value; renderResult(); save(); return; }
+    if (t.id === "round"){ S.round = t.value; renderResult(); save(); return; }
+  });
+
+  function copy(text){
+    const ok = "Copied. Paste it in WhatsApp or Telegram.";
+    if (IN_SCRIPTABLE){ bridge("copy", text); toast(ok); return; }
+    const fallback = () => {
+      const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let done = false; try { done = document.execCommand("copy"); } catch(e){}
+      ta.remove(); toast(done ? ok : "Couldn't copy here, sorry.");
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => toast(ok), fallback);
+    else fallback();
+  }
+
+  let toastTimer;
+  function toast(msg){
+    const el = $("toast"); el.textContent = msg; el.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 2000);
+  }
+
+  $("hero").innerHTML = SPARK(72, 12, 1.5) + SPARK(124, 14, .9) + SPARK(4, 10, .8) +
+    `<g class="bob"><g transform="translate(6,3) scale(1.45)">${art(0)}</g></g><g class="bob b2"><g transform="translate(68,15) scale(1.25)">${art(1)}</g></g>`;
+  $("tiny").innerHTML = avatar(0, 22);
+
+  window.__billsplit = {compute, summaryText, iconSVG, get state(){ return S; }};
+  renderStatic();
+})();
+</script>
+</body>
+</html>
